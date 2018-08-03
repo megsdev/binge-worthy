@@ -1,10 +1,33 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/'
 //testing purposes only, need to use /configuration
 
+
 class SearchResults extends Component {
+
+    addToList = () => {
+        axios({
+            method: 'POST',
+            url: `/api/list`,
+            data: {
+                tmdb_id: '',
+                list_type: '',
+            }
+        })
+    }
+
+    componentDidMount() {
+        axios({
+            method: "GET",
+            url: '/me'
+        }).then(response => {
+            console.log('responst', response)
+        })
+    }
+
     render() {
         console.log('props', this.props)
         return (

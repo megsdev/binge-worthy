@@ -1,5 +1,4 @@
 require('dotenv').config({ path: `${__dirname}/.env` })
-const express = require('express')
 const bodyParser = require('body-parser')
 const massive = require('massive')
 const controller = require('./controller')
@@ -7,8 +6,8 @@ const cors = require('cors')
 const passport = require('passport')
 const strategy = require(`${__dirname}/strategy.js`)
 const session = require('express-session')
+const app = require('./app');
 
-const app = express()
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -24,28 +23,35 @@ app.use(passport.session())
 passport.use(strategy)
 
 passport.serializeUser(function (user, done) {
-  done(null, { id: user.id, display: user.displayName, nickname: user.nickname, email: user.emails[0].value });
+  console.log('serialzed user', user);
+
+  done(null, user);
 });
 
-passport.deserializeUser(function (obj, done) {
-  done(null, obj);
+passport.deserializeUser(function (user, done) {
+  console.log('deserialized user', user);
+  let db = app.get('db')
+  // db.getUser({ user.user_id }).then(user => {
+
+  // })
+  done(null, user);
 });
-
-
-//MASSIVE
-massive(process.env.CONNECTION_STRING, {
-  scripts: `${__dirname}/db`
-
-}).then(dbInstance => {
-  app.set('db', dbInstance)
-}).catch(error => console.log(error))
 
 //AUTH0
 app.get('/login',
   passport.authenticate('auth0',
-    { successRedirect: '/home', failureRedirect: '/login', failureFlash: true }
-  )
+  ),
+  (req, res) => {
+    console.log('req.user', req.user)
+  }
 );
+
+app.get('/login/callback', passport.authenticate('auth0', {
+  successRedirect: 'http://localhost:3000/home',
+  failureRedirect: 'http://localhost:3000/login',
+  failureFlash: false
+
+}))
 
 app.get('/me', (req, res, next) => {
   if (!req.user) {
