@@ -12,6 +12,7 @@ font-family: 'Raleway', sans-serif;
 
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .toUppercase {
@@ -102,7 +103,23 @@ NAV BAR */
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: #D1E1E9;
+  border-color: #337D8A;
+  border-style: solid;
+}
+
+/* LOGIN PAGE
+LOGIN PAGE 
+LOGIN PAGE */
+
+.login-button {
+  background: #337D8A;
+  border: 0 none;
+  width: 200px;
+  height: 100px;
+  cursor: pointer;
+  color: #D1E1E9;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
 }
 
 /* DASHBOARD
@@ -170,13 +187,20 @@ SEARCH RESULTS */
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content button {
   color: #D1E1E9;
+  background-color: #3E98A8; 
+  width: 100%;
+  border: none;
   text-decoration: none;
   display: block;
   height: 52px;
   font-size: 20px;
   font-family: 'Raleway', sans-serif;
+}
+
+.dropdown-content button:hover {
+  background-color: #337D8A;
 }
 
 .dropdown:hover .dropdown-content {

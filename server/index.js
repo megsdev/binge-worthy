@@ -10,7 +10,7 @@ const app = require('./app');
 
 
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors());
 
 app.use(session({
   secret: 'shitballs',
@@ -23,18 +23,18 @@ app.use(passport.session())
 passport.use(strategy)
 
 passport.serializeUser(function (user, done) {
-  console.log('serialzed user', user);
+  // console.log('serialzed user', user);
 
   done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
-  console.log('deserialized user', user);
+  // console.log('deserialized user', user);
   let db = app.get('db')
-  // db.getUser({ user.user_id }).then(user => {
-
-  // })
-  done(null, user);
+  db.getUser([user.user_id])
+    .then(user => {
+      done(null, user[0])
+    })
 });
 
 //AUTH0
@@ -55,7 +55,7 @@ app.get('/login/callback', passport.authenticate('auth0', {
 
 app.get('/me', (req, res, next) => {
   if (!req.user) {
-    res.redirect('/login');
+    res.sendStatus(401);
   } else {
     res.status(200).send(JSON.stringify(req.user, null, 10));
   }
@@ -63,7 +63,6 @@ app.get('/me', (req, res, next) => {
 
 //ENDPOINTS
 app.post('/api/list', controller.addShow)
-
 
 const port = 4000
 app.listen(port, () => { console.log(`server listening on port ${port}`) })

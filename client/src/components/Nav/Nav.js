@@ -14,7 +14,9 @@ class Nav extends Component {
         super()
 
         this.state = {
-            searchInput: ''
+            searchInput: '',
+            name: '',
+            picture: ''
         }
     }
 
@@ -31,6 +33,22 @@ class Nav extends Component {
         }).then(() => {
             this.props.history.push('/results')
         })
+    }
+
+    getUser = () => {
+        axios({
+            method: 'GET',
+            url: '/me'
+        }).then(response => {
+            this.setState({
+                name: response.data.name,
+                picture: response.data.picture
+            })
+        })
+    }
+
+    componentDidMount = () => {
+        this.getUser()
     }
 
     render() {
@@ -56,7 +74,7 @@ class Nav extends Component {
                         <i className="fas fa-search fa-2x" id="search_button"></i>
                     </div>
                 </div>
-                <img src="https://robohash.org/YOUR-TEXT.png?size=100x100" alt='' className='avatar' />
+                <img src={this.state.picture} alt='' className='avatar' />
             </div>
         )
     }
