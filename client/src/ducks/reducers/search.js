@@ -4,11 +4,11 @@ const initialState = {
 
 const UPDATE_SEARCH_RESULTS = 'UPDATE_SEARCH_RESULTS'
 
-function reducer( state = initialState, action ) {
-    switch( action.type ) {
+function search(state = initialState, action) {
+    switch (action.type) {
         case UPDATE_SEARCH_RESULTS:
-            return Object.assign( {}, state, {results: action.payload})
-        
+            return Object.assign({}, state, { results: action.payload })
+
         default: return state
     }
 }
@@ -20,4 +20,4 @@ export function updateSearchResults(results) {
     }
 }
 
-export default reducer
+export default search

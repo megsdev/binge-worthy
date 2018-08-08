@@ -7,11 +7,11 @@ import Nav from './components/Nav/Nav'
 
 class App extends Component {
   render() {
-    console.log("app props", this.props)
+    // console.log("app props", this.props)
     return (
       <div className="App">
-        <Nav history={this.props.history}/>
-        { routes }
+        <Nav history={this.props.history} />
+        {routes}
       </div>
     );
   }

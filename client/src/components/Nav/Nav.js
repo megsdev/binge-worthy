@@ -52,7 +52,7 @@ class Nav extends Component {
     }
 
     render() {
-        console.log('props on nav', this.props)
+        // console.log('props on nav', this.props)
         return (
             <div className='Nav'>
                 <Link to='home'>
