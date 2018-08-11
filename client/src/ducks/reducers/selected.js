@@ -7,7 +7,7 @@ const UPDATE_SELECTED_SHOW = 'UPDATE_SELECTED_SHOW'
 function selected(state = initialState, action) {
     switch (action.type) {
         case UPDATE_SELECTED_SHOW:
-            return { selectedshow: action.payload }
+            return { selectedShow: action.payload }
 
         default: return state
     }

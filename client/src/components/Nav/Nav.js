@@ -55,7 +55,7 @@ class Nav extends Component {
         // console.log('props on nav', this.props)
         return (
             <div className='Nav'>
-                <Link to='home'>
+                <Link to='/'>
                     <h1 className='navTitle toUppercase'>Binge-worthy</h1>
                 </Link>
                 <div className="search">
@@ -74,7 +74,9 @@ class Nav extends Component {
                         <i className="fas fa-search fa-2x" id="search_button"></i>
                     </div>
                 </div>
-                <img src={this.state.picture} alt='' className='avatar' />
+                <Link to='/profile'>
+                    <img src={this.state.picture} alt='' className='avatar' />
+                </Link>
             </div>
         )
     }

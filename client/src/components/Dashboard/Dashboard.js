@@ -3,7 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { fetchingPopularShows, popularShowsFetchSuccess, popularShowsFetchFailure } from '../../ducks/reducers/popular'
-import { updateSelectedShow } from '../../ducks/reducers/selected'
+import Result from '../Result/Result'
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/'
 
@@ -45,56 +45,7 @@ class Dashboard extends Component {
                             <div style={{ color: 'red' }}>
                                 {this.props.error}
                             </div>}
-                        {this.props.popularShows ? this.props.popularShows.map((show) => (
-                            <div
-                                key={show.id}
-                                onMouseOver={() => this.setState({ [show.id]: true })}
-                                onMouseLeave={() => this.setState({ [show.id]: false })}
-                                id={show.id}
-                                onClick={(e) => {
-                                    this.setState({ showId: e.target.id });
-                                    this.props.updateSelectedShow(e.target.id)
-                                }}
-                                style={{
-                                    backgroundImage: `url(${BASE_IMG_URL}${show.poster_path}`,
-                                    width: '20%',
-                                    minWidth: '450px',
-                                    height: 700,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundColor: this.state[show.id] ? 'rgba(40, 40, 40, 0.3)' : 'rgba(40, 40, 40, 1)',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-
-                                {this.state[show.id] ?
-                                    <div style={{
-                                        backgroundColor: '#282828',
-                                        width: '70%',
-                                        padding: '20px',
-                                    }} >
-                                        <h1 style={{ color: 'white', fontSize: '3em' }}>{show.original_name}</h1>
-                                        <p style={{
-                                            color: 'white',
-                                            fontFamily: 'Raleway',
-                                        }} >{show.overview}</p>
-                                        <div className='dropdown' >
-                                            <button className='dropdown-button' >Add To List</button>
-                                            <div className='dropdown-content'>
-                                                <button onClick={() => this.addToList(show.id, 'Wanna Binge')} href="#">Wanna Binge</button>
-                                                <button onClick={() => this.addToList(show.id, 'Currently Bingeing')} href="#">Currently Bingeing</button>
-                                                <button onClick={() => this.addToList(show.id, 'Binged')} href="#">Binged</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    : null}
-
-                            </div>
-                        )) : null
-                        }
+                        <Result shows={this.props.popularShows} />
                     </div >
                 </div >
             )
@@ -110,5 +61,5 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { fetchingPopularShows, popularShowsFetchSuccess, popularShowsFetchFailure, updateSelectedShow })(Dashboard)
+export default connect(mapStateToProps, { fetchingPopularShows, popularShowsFetchSuccess, popularShowsFetchFailure })(Dashboard)
 

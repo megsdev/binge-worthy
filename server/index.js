@@ -42,12 +42,12 @@ app.get('/login',
   passport.authenticate('auth0',
   ),
   (req, res) => {
-    console.log('req.user', req.user)
+    // console.log('req.user', req.user)
   }
 );
 
 app.get('/login/callback', passport.authenticate('auth0', {
-  successRedirect: 'http://localhost:3000/home',
+  successRedirect: 'http://localhost:3000/',
   failureRedirect: 'http://localhost:3000/login',
   failureFlash: false
 
@@ -63,6 +63,7 @@ app.get('/me', (req, res, next) => {
 
 //ENDPOINTS
 app.post('/api/list', controller.addShow)
+app.get('/api/list', controller.getShows)
 
 const port = 4000
 app.listen(port, () => { console.log(`server listening on port ${port}`) })
