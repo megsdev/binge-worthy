@@ -23,13 +23,11 @@ app.use(passport.session())
 passport.use(strategy)
 
 passport.serializeUser(function (user, done) {
-  // console.log('serialzed user', user);
 
   done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
-  // console.log('deserialized user', user);
   let db = app.get('db')
   db.getUser([user.user_id])
     .then(user => {
@@ -64,6 +62,8 @@ app.get('/me', (req, res, next) => {
 //ENDPOINTS
 app.post('/api/list', controller.addShow)
 app.get('/api/list', controller.getShows)
+app.put('/api/list', controller.moveShow)
+app.delete('/api/list', controller.deleteShow)
 
 const port = 4000
 app.listen(port, () => { console.log(`server listening on port ${port}`) })

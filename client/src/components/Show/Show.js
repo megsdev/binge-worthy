@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import Button from '../Button/Button'
 import fetchShow from '../../api/fetchShow'
 import { updateSelectedShow } from '../../ducks/reducers/selected'

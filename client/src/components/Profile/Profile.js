@@ -3,6 +3,7 @@ import axios from 'axios'
 import { updateBinged, updateWannaBinge, updateCurrentlyBingeing, resetUserShows } from '../../ducks/reducers/userShows'
 import { connect } from 'react-redux'
 import fetchShow from '../../api/fetchShow'
+import Result from '../Result/Result'
 
 class Profile extends Component {
 
@@ -22,7 +23,7 @@ class Profile extends Component {
                                 this.props.updateBinged(response.data)
                             })
                     }
-                    else if (show.list_type === "Currently Binging") {
+                    else if (show.list_type === "Currently Bingeing") {
                         fetchShow(show.tmdb_id)
                             .then(response => {
                                 this.props.updateCurrentlyBingeing(response.data)
@@ -45,18 +46,21 @@ class Profile extends Component {
     }
 
     render() {
-        console.log('props on profile', this.props)
         return (
-            <div>
-                <h2>Profile</h2>
-                <h2>Wanna Binge</h2>
-                <div>{this.props.userShows.wannaBinge.map(show => (
-                    <p>{show.original_name}</p>
-                ))}</div>
-
-                <h2>Currently Bingeing</h2>
-                <div>{}</div>
-            </div>
+            <div style={styles.pageContainer} >
+                <h2 style={styles.listHeader}>Wanna Binge</h2>
+                <div style={styles.listContainer} >
+                    <Result shows={this.props.userShows.wannaBinge} alternative />
+                </div>
+                <h2 style={styles.listHeader} >Currently Bingeing</h2>
+                <div style={styles.listContainer}>
+                    <Result shows={this.props.userShows.currentlyBingeing} alternative />
+                </div>
+                <h2 style={styles.listHeader}>Binged</h2>
+                <div style={styles.listContainer}>
+                    <Result shows={this.props.userShows.binged} alternative />
+                </div>
+            </div >
         )
     }
 }
@@ -64,6 +68,26 @@ class Profile extends Component {
 function mapStateToProps(state) {
     return {
         userShows: state.userShows
+    }
+}
+
+let styles = {
+    pageContainer: {
+        backgroundColor: '#282828',
+        color: 'white',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        fontFamily: 'Raleway',
+    },
+    listHeader: {
+        padding: '10px'
+
+    },
+    listContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center'
     }
 }
 

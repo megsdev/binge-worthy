@@ -5,9 +5,6 @@ import { Redirect } from 'react-router'
 import { fetchingPopularShows, popularShowsFetchSuccess, popularShowsFetchFailure } from '../../ducks/reducers/popular'
 import Result from '../Result/Result'
 
-const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/'
-
-
 class Dashboard extends Component {
     constructor() {
         super()

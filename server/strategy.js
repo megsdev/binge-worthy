@@ -13,8 +13,7 @@ module.exports = new Auth0Strategy({
     let db = app.get('db')
 
     db.getUser([profile.user_id]).then(user => {
-      // console.log('PROFILE', profile);
-      // console.log("EXTRA", extraParams);
+
       if (!user.length) {
         db.addUser([profile.displayName, profile.user_id, profile.friends, profile.picture])
           .then(user => {

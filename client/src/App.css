@@ -209,3 +209,14 @@ SEARCH RESULTS */
     flex-direction: column;
     align-items: center;
 }
+
+
+/* PROFILE
+PROFILE
+PROFILE */
+
+.list-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}

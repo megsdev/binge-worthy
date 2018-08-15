@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import addToList from '../../api/addToList'
 
 class Button extends Component {
-    constructor(props) {
-        super(props)
-    }
+
     render() {
+        console.log('props on button', this.props);
+
         return (
             <div className='dropdown' >
                 <button className='dropdown-button' >Add To List</button>
