@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+
 class DeleteButton extends Component {
 
 
@@ -14,12 +15,18 @@ class DeleteButton extends Component {
         })
     }
 
+    handleDeleteShow = (type) => (event) => {
+        event.preventDefault();
+        this.deleteShow(this.props.id, type);
+        window.location.reload();
+    }
+
     render() {
         return (
             <div className='dropdown' >
                 <button
                     className='dropdown-button'
-                    onClick={() => this.deleteShow(this.props.id)}
+                    onClick={this.handleDeleteShow(this.props.id)}
                     href='#'
                 >Delete Show</button>
             </div>

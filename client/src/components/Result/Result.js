@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
 import EditButton from '../Button/EditButton'
 import DeleteButton from '../Button/DeleteButton'
-
-const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/'
+import imageURL from '../../api/imageURL'
 
 class Result extends Component {
     constructor() {
@@ -24,7 +23,7 @@ class Result extends Component {
                     onMouseOver={() => this.setState({ [show.id]: true })}
                     onMouseLeave={() => this.setState({ [show.id]: false })}
                     id={show.id}
-                    style={{ ...styles.show, backgroundImage: `url(${BASE_IMG_URL}${show.poster_path}` }}>
+                    style={{ ...styles.show, backgroundImage: `url(${imageURL}${show.poster_path}` }}>
 
                     {this.state[show.id] ?
                         <div style={styles.popupBox} >
@@ -46,7 +45,7 @@ class Result extends Component {
                         onMouseOver={() => this.setState({ [show.id]: true })}
                         onMouseLeave={() => this.setState({ [show.id]: false })}
                         id={show.id}
-                        style={{ ...styles.showAlternative, backgroundImage: `url(${BASE_IMG_URL}${show.poster_path}` }}>
+                        style={{ ...styles.showAlternative, backgroundImage: `url(${imageURL}${show.poster_path}` }}>
 
                         {this.state[show.id] ?
                             <div style={styles.alternativeButtonsContainer} >

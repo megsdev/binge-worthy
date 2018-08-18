@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
-const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/'
+import imageURL from '../../api/imageURL'
 
 class Login extends Component {
     constructor() {
@@ -43,7 +42,7 @@ class Login extends Component {
                     <div
                         key={show.id}
                         style={{
-                            backgroundImage: `url(${BASE_IMG_URL}${show.poster_path}`,
+                            backgroundImage: `url(${imageURL}${show.poster_path}`,
                             width: '20%',
                             height: 700,
                             backgroundSize: 'cover',

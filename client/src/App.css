@@ -37,6 +37,7 @@ NAV BAR */
   justify-content: space-around;
   margin: 0;
   z-index: 2;
+  border-bottom: 1px solid #D1E1E9
 }
 
 .navTitle a:hover, a:visited, a:link, a:active
@@ -220,3 +221,11 @@ PROFILE */
   justify-content: center;
   margin: 10px;
 }
+
+
+
+/* 
+.Toastify__toast {
+  background-color: #337D8A !important;
+  color: white !important;
+} */
