@@ -1,0 +1,111 @@
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+  
+    .show {
+        width: 20%;
+        min-width: 150px;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .popupBox {
+        background-color: #282828;
+        width: 70%;
+        padding: 20px;
+    }
+    
+    .showName {
+        color: white;
+        font-size: 100%;
+    }
+    
+    .showOverview {
+        color: white;
+        font-family: "Raleway";
+        font-size: 50%
+    }
+    
+    .showAlternative {
+        width: 5%;
+        min-width: 300px;
+        height: 450px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+    
+    .alternativeButtonsContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    } 
+  
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+  
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    .show {
+    width: 25%;
+    min-width: 255px;
+    min-height: 400px;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+    .show {
+    width: 25%;
+    min-width: 150px;
+    height: 300px;
+    }    
+  }
+  
+
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+ @media (min-width: 481px) and (max-width: 767px) {
+
+    .show {
+        width: 33.33%;
+        min-width: 125px;
+        height: 300px;
+    }     
+  } 
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  /* @media (min-width: 320px) and (max-width: 480px) {
+    
+    //CSS
+    
+  } */
+
+

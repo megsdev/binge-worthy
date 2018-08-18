@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import routes from './routes'
 import Nav from './components/Nav/Nav'
-import { ToastContainer, toast } from 'react-toastify'
 
 
 

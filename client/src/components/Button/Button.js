@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import addToList from '../../api/addToList'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import './Button.css'
 
 class Button extends Component {
     notify = () => {
@@ -25,7 +26,6 @@ class Button extends Component {
                     <ToastContainer
                         closeButton={false}
                         style={{
-                            color: '#337D8A',
                             marginTop: '100px'
                         }}
 
@@ -36,5 +36,6 @@ class Button extends Component {
     }
 
 }
+
 
 export default Button

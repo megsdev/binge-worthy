@@ -24,11 +24,9 @@ class SearchResults extends Component {
     render() {
         // console.log('props', this.props)
         return (
-            <div className='results-page'>
+            <div style={styles.resultsPage}>
                 {this.props.search.results && this.props.search.results.data ? (
-                    <div style={{
-                        display: 'flex', flexWrap: 'wrap', backgroundColor: 'white', justifyContent: 'center'
-                    }}>
+                    <div style={styles.resultsContainer}>
 
                         <Result shows={this.props.search.results.data.results} />
                     </div >
@@ -36,6 +34,23 @@ class SearchResults extends Component {
 
             </div>
         )
+    }
+}
+
+let styles = {
+    resultsPage: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 0,
+        marginTop: '150px',
+    },
+    resultsContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        backgroundColor: 'white',
+        justifyContent: 'center'
     }
 }
 

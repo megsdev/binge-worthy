@@ -32,50 +32,25 @@ class Login extends Component {
     render() {
         console.log('state on login', this.state)
         return (
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row-reverse',
-                flexWrap: 'wrap',
-                backgroundColor: '#282828'
-            }}>
+            <div style={styles.container}>
                 {this.state.popularShows.map((show) => (
                     <div
                         key={show.id}
-                        style={{
-                            backgroundImage: `url(${imageURL}${show.poster_path}`,
-                            width: '20%',
-                            height: 700,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                            opacity: '0.5',
-                            position: 'relative'
-                        }}>
+                        style={{ ...styles.posters, backgroundImage: `url(${imageURL}${show.poster_path}` }}>
                     </div>
                 ))
                 }
                 <div
-                    style={{
-                        position: 'fixed',
-                        width: '100vw',
-                        height: '100vh',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }} >
+                    style={styles.loginContainer} >
                     <h1
                         className='toUppercase'
-                        style={{
-                            fontSize: '5em',
-                            color: '#D1E1E9',
-                            width: '50%'
-                        }}>
+                        style={styles.headline}>
                         Meet your next favorite show.
                     </h1>
                     <button
                         onClick={this.loginRedirect}
-                        className='login-button toUppercase'
+                        className='toUppercase'
+                        style={styles.loginButton}
                     >
                         Login Now
                     </button>
@@ -85,14 +60,47 @@ class Login extends Component {
     }
 }
 
+let styles = {
+    container: {
+        display: 'flex',
+        flexDirection: 'row-reverse',
+        flexWrap: 'wrap',
+        backgroundColor: '#282828'
+    },
+    posters: {
+        width: '20%',
+        height: 700,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        opacity: '0.5',
+        position: 'relative'
+    },
+    loginContainer: {
+        position: 'fixed',
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    headline: {
+        fontSize: '5em',
+        color: '#D1E1E9',
+        width: '50%'
+    },
+    loginButton: {
+        background: '#337D8A',
+        border: '0 none',
+        width: '200px',
+        height: '100px',
+        cursor: 'pointer',
+        color: '#D1E1E9',
+        fontFamily: "'Raleway', sans-serif",
+        fontSize: '20px',
+    }
+}
+
 export default Login
 
-
-
-
-                        // <img
-                        //     onMouseOver={() => this.setState({ [show.id]: true })}
-                        //     onMouseLeave={() => this.setState({ [show.id]: false })}
-                        //     style={{ width: '20%', minWidth: 400 }}
-                        //     key={show.id} src={BASE_IMG_URL + show.poster_path}
-                        // />

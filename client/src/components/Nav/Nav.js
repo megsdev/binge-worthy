@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
-
 import { updateSearchResults } from '../../ducks/reducers/search'
+import './Nav.css'
+
 
 
 //https://api.themoviedb.org/3/search/tv?api_key=93b28d68c5a5b44af2e7b2b65e2e4ee6&language=en-US&query=office&page=1
@@ -51,6 +52,8 @@ class Nav extends Component {
         this.getUser()
     }
 
+
+
     render() {
         // console.log('props on nav', this.props)
         return (
@@ -71,7 +74,7 @@ class Nav extends Component {
                         className="search-button"
                         onClick={this.fetchShow}
                     >
-                        <i className="fas fa-search fa-2x" id="search_button"></i>
+                        <i className="fas fa-search fa-1x" id="search_button"></i>
                     </div>
                 </div>
                 <Link to='/profile'>
@@ -85,3 +88,4 @@ class Nav extends Component {
 
 
 export default connect(null, { updateSearchResults })(Nav)
+
