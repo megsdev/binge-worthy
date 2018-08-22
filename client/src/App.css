@@ -20,6 +20,17 @@ font-family: 'Raleway', sans-serif;
   font-family: 'Montserrat', sans-serif;
 }
 
+a:visited {
+  color: transparent !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.Nav a {
+  text-decoration: none;
+}
 
 /* 
 .Toastify__toast {

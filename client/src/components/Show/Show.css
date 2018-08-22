@@ -1,0 +1,108 @@
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    Screen = B/w 320px to 767px
+  */
+
+.showPageContainer {
+    display: flex;
+    flex-direction: column;
+}
+  
+.heroImage {
+    width: 100vw;
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.showInfoContainer {
+    background-color: #282828;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0 15px 0;
+
+}
+
+.showInfoContainer h1 {
+    font-size: 16px;
+}
+
+.showInfoContainer h2 {
+    font-size: 14px;
+}
+
+.showInfoContainer p {
+    font-size: 10px;
+}
+
+.whiteText {
+    color: white;
+    font-family: 'Raleway';
+    padding: 0 15px 0 15px;
+}
+
+.networkBtn {
+    width: 50px;
+}
+
+  /* 
+    Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) {
+    
+    .showPageContainer {
+        flex-direction: row;
+    }    
+
+    .heroImage {
+        width: 75vw;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .showInfoContainer {
+        background-color: #282828;
+        width: 25vw;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 0 15px 0;
+    }    
+
+    .showInfoContainer h1 {
+        font-size: 18px;
+    }
+    
+    .showInfoContainer h2 {
+        font-size: 16px;
+    }
+    
+    .showInfoContainer p {
+        font-size: 12px;
+    }
+  }
+
+@media (min-width: 1025px) {
+    .showInfoContainer h1 {
+        font-size: 20px;
+    }
+    
+    .showInfoContainer h2 {
+        font-size: 18px;
+    }
+    
+    .showInfoContainer p {
+        font-size: 14px;
+    }
+
+}

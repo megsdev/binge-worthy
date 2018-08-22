@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Button from '../Button/Button'
 import fetchShow from '../../api/fetchShow'
 import { updateSelectedShow } from '../../ducks/reducers/selected'
+import './Show.css'
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/'
 
@@ -21,28 +22,27 @@ class Show extends Component {
 
 
         return this.props.selectedShow ? (
-            <div style={{ display: 'flex', }}>
-                <div style={styles.showInfoContainer}>
+            <div className='showPageContainer'>
+                <div className='showInfoContainer' >
                     <h1
-                        className='toUppercase'
-                        style={styles.whiteText}
+                        className='toUppercase whiteText'
                     >{this.props.selectedShow.name}</h1>
                     <Button id={this.props.selectedShow.id} />
-                    <h2 style={styles.whiteText} >{this.props.selectedShow.number_of_seasons} Season(s)</h2>
-                    <p style={styles.whiteText} >{this.props.selectedShow.overview}</p>
-                    <p style={styles.whiteText} >Creator: {this.props.selectedShow.created_by.map((person) => (person.name + ' '))} </p>
-                    <p style={styles.whiteText} >Genre: {this.props.selectedShow.genres.map((genre) => (genre.name + ' '))} </p>
+                    <h2 className='whiteText' >{this.props.selectedShow.number_of_seasons} Season(s)</h2>
+                    <p className='whiteText' >{this.props.selectedShow.overview}</p>
+                    <p className='whiteText' >Creator: {this.props.selectedShow.created_by.map((person) => (person.name + ' '))} </p>
+                    <p className='whiteText' >Genre: {this.props.selectedShow.genres.map((genre) => (genre.name + ' '))} </p>
                     <a href={this.props.selectedShow.homepage}>
                         <img
                             src={`${BASE_IMG_URL}${this.props.selectedShow.networks[0].logo_path}`}
                             alt=""
-                            style={styles.networkButton}
+                            className='networkBtn'
                         />
                     </a>
                 </div>
-                <div style={{
-                    ...styles.heroImage, backgroundImage: `url(${BASE_IMG_URL}${this.props.selectedShow.backdrop_path}`
-                }}>
+                <div
+                    className='heroImage'
+                    style={{ backgroundImage: `url(${BASE_IMG_URL}${this.props.selectedShow.backdrop_path}` }}>
 
                 </div >
             </div>

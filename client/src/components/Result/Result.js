@@ -50,29 +50,31 @@ class Result extends Component {
 
         )
             : (
-                this.props.shows ? this.props.shows.map((show) => (
-                    <Link
-                        to={`/show/${show.id}`}
-                        key={show.id}
-                        onMouseOver={() => this.setState({ [show.id]: true })}
-                        onMouseLeave={() => this.setState({ [show.id]: false })}
-                        id={show.id}
-                        style={{
-                            backgroundImage: `url(${imageURL}${show.poster_path}`
-                        }}
-                        className='showAlternative'
-                    >
-                        {this.state[show.id] ?
-                            <div
-                                //style={styles.alternativeButtonsContainer} 
-                                className='alternativeButtonsContainer' >
-                                <DeleteButton id={show.id} />
-                                <EditButton id={show.id} />
-                            </div>
-                            : null}
+                <section className='listContainer' >
+                    {this.props.shows ? this.props.shows.map((show) => (
+                        <Link
+                            to={`/show/${show.id}`}
+                            key={show.id}
+                            onMouseOver={() => this.setState({ [show.id]: true })}
+                            onMouseLeave={() => this.setState({ [show.id]: false })}
+                            id={show.id}
+                            style={{
+                                backgroundImage: `url(${imageURL}${show.poster_path}`
+                            }}
+                            className='showAlternative'
+                        >
+                            {this.state[show.id] ?
+                                <div
+                                    className='alternativeButtonsContainer' >
+                                    <DeleteButton id={show.id} />
+                                    <EditButton id={show.id} />
+                                </div>
+                                : null}
 
-                    </Link>
-                )) : null
+                        </Link>
+
+                    )) : null}
+                </section>
             )
 
     }

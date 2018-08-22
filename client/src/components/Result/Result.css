@@ -3,10 +3,11 @@
   ##Screen = 1281px to higher resolution desktops
 */
   
+
     .show {
         width: 20%;
         min-width: 150px;
-        height: 400px;
+        height: 500px;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -32,18 +33,29 @@
         font-family: "Raleway";
         font-size: 50%
     }
+
     
+    .listContainer {
+        display: flex;
+        background-color: black;
+        min-width: 100%;
+        min-height: 300px;
+        overflow-x: auto;
+    }
+    
+
     .showAlternative {
         width: 5%;
-        min-width: 300px;
-        height: 450px;
+        min-width: 200px;
+        height: 300px;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center
+        justify-content: center;
+        margin: 5px;
     }
     
     .alternativeButtonsContainer {
@@ -102,10 +114,19 @@
     ##Screen = B/w 320px to 479px
   */
   
-  /* @media (min-width: 320px) and (max-width: 480px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     
-    //CSS
-    
-  } */
+    .showAlternative {
+        width: 25%;
+        min-height: 250px;
+    }
+
+    .show {
+        width: 50%;
+        min-height: 250px;
+    }
+
+  
+  }
 
 

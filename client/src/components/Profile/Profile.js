@@ -4,6 +4,7 @@ import { updateBinged, updateWannaBinge, updateCurrentlyBingeing, resetUserShows
 import { connect } from 'react-redux'
 import fetchShow from '../../api/fetchShow'
 import Result from '../Result/Result'
+import './Profile.css'
 
 class Profile extends Component {
 
@@ -47,19 +48,25 @@ class Profile extends Component {
 
     render() {
         return (
-            <div style={styles.pageContainer} >
-                <h2 style={styles.listHeader}>Wanna Binge</h2>
-                <div style={styles.listContainer} >
-                    <Result shows={this.props.userShows.wannaBinge} alternative />
-                </div>
-                <h2 style={styles.listHeader} >Currently Bingeing</h2>
-                <div style={styles.listContainer}>
-                    <Result shows={this.props.userShows.currentlyBingeing} alternative />
-                </div>
-                <h2 style={styles.listHeader}>Binged</h2>
-                <div style={styles.listContainer}>
-                    <Result shows={this.props.userShows.binged} alternative />
-                </div>
+            <div className='pageContainer' >
+                <h2 className='listHeader'>Wanna Binge</h2>
+                <section className='listContainer' >
+                    <Result shows={this.props.userShows.wannaBinge}
+                        alternative
+                    />
+                </section>
+                <h2 className='listHeader' >Currently Bingeing</h2>
+                <section className='listContainer'>
+                    <Result
+                        shows={this.props.userShows.currentlyBingeing}
+                        alternative />
+                </section>
+                <h2 className='listHeader'>Binged</h2>
+                <section className='listContainer'>
+                    <Result
+                        shows={this.props.userShows.binged}
+                        alternative />
+                </section>
             </div >
         )
     }
@@ -86,8 +93,10 @@ let styles = {
     },
     listContainer: {
         display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center'
+        backgroundColor: 'black',
+        minWidth: '100%',
+        minHeight: '300px',
+        overflowX: 'auto'
     }
 }
 
