@@ -50,23 +50,18 @@ class Profile extends Component {
         return (
             <div className='pageContainer' >
                 <h2 className='listHeader'>Wanna Binge</h2>
-                <section className='listContainer' >
-                    <Result shows={this.props.userShows.wannaBinge}
-                        alternative
-                    />
-                </section>
+                <Result
+                    shows={this.props.userShows.wannaBinge}
+                    alternative
+                />
                 <h2 className='listHeader' >Currently Bingeing</h2>
-                <section className='listContainer'>
-                    <Result
-                        shows={this.props.userShows.currentlyBingeing}
-                        alternative />
-                </section>
+                <Result
+                    shows={this.props.userShows.currentlyBingeing}
+                    alternative />
                 <h2 className='listHeader'>Binged</h2>
-                <section className='listContainer'>
-                    <Result
-                        shows={this.props.userShows.binged}
-                        alternative />
-                </section>
+                <Result
+                    shows={this.props.userShows.binged}
+                    alternative />
             </div >
         )
     }
