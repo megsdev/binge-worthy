@@ -1,5 +1,6 @@
 require('dotenv').config({ path: `${__dirname}/.env` })
 const bodyParser = require('body-parser')
+const express = require('express')
 const massive = require('massive')
 const controller = require('./controller')
 const cors = require('cors')
@@ -17,6 +18,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+
+console.log(__dirname)
+
+app.use('/', express.static('../client/build'));
+//app.get('/', (req, res) => res.send('hi its working'))
 
 app.use(passport.initialize())
 app.use(passport.session())
