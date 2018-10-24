@@ -26,7 +26,7 @@ class Login extends Component {
   };
 
   loginRedirect = () => {
-    window.location.href = "165.227.10.75:4000/login";
+    window.location.href = "http://165.227.10.75:4000/login";
   };
 
   render() {
