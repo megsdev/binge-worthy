@@ -28,11 +28,15 @@ class Dashboard extends Component {
     axios({
       method: "GET",
       url: "/me"
-    }).then(response => {
-      if (!response.data.name) {
+    })
+      .then(response => {
+        if (!response.data.name) {
+          this.props.history.push("/login");
+        }
+      })
+      .catch(() => {
         this.props.history.push("/login");
-      }
-    });
+      });
   };
 
   fetchPopularShows = () => {
