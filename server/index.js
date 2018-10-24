@@ -1,31 +1,33 @@
-require('dotenv').config({ path: `${__dirname}/.env` })
-const bodyParser = require('body-parser')
-const express = require('express')
-const massive = require('massive')
-const controller = require('./controller')
-const cors = require('cors')
-const passport = require('passport')
-const strategy = require(`${__dirname}/strategy.js`)
-const session = require('express-session')
-const app = require('./app');
+require("dotenv").config({ path: `${__dirname}/.env` });
+const bodyParser = require("body-parser");
+const express = require("express");
+const massive = require("massive");
+const controller = require("./controller");
+const cors = require("cors");
+const passport = require("passport");
+const strategy = require(`${__dirname}/strategy.js`);
+const session = require("express-session");
+const app = require("./app");
 
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(session({
-  secret: 'shitballs',
-  resave: false,
-  saveUninitialized: false
-}))
+app.use(
+  session({
+    secret: "shitballs",
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
-console.log(__dirname)
+console.log(__dirname);
 
-app.use('/', express.static('../client/build'));
+app.use("/", express.static("../client/build"));
 //app.get('/', (req, res) => res.send('hi its working'))
 
-app.use(passport.initialize())
-app.use(passport.session())
-passport.use(strategy)
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(strategy);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -50,8 +52,8 @@ app.get("/login", passport.authenticate("auth0"), (req, res) => {
 app.get(
   "/login/callback",
   passport.authenticate("auth0", {
-    successRedirect: "165.227.10.75:3000/",
-    failureRedirect: "165.227.10.75:3000/login",
+    successRedirect: "/",
+    failureRedirect: "/login",
     failureFlash: false
   })
 );
