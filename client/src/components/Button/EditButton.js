@@ -1,13 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import fetchShow from "../../api/fetchShow";
-import { connect } from "react-redux";
-
-import {
-  updateBinged,
-  updateCurrentlyBingeing,
-  updateWannaBinge
-} from "../../ducks/reducers/userShows";
 
 class EditButton extends Component {
   moveShow = (showId, listType) => {
@@ -19,36 +11,12 @@ class EditButton extends Component {
         list_type: listType
       }
     });
-
-    axios({
-      method: "GET",
-      url: "/api/list"
-    }).then(response => {
-      if (this.props.userShows) {
-        this.props.resetUserShows();
-      }
-      response.data.filter(show => {
-        if (show.list_type === "Binged") {
-          fetchShow(show.tmdb_id).then(response => {
-            this.props.updateBinged(response.data);
-          });
-        } else if (show.list_type === "Currently Bingeing") {
-          fetchShow(show.tmdb_id).then(response => {
-            this.props.updateCurrentlyBingeing(response.data);
-          });
-        } else {
-          fetchShow(show.tmdb_id).then(response => {
-            this.props.updateWannaBinge(response.data);
-          });
-        }
-      });
-    });
   };
 
   handleMoveShow = type => event => {
     event.preventDefault();
     this.moveShow(this.props.id, type);
-    // window.location.reload();
+    window.location.reload();
   };
 
   render() {
@@ -71,11 +39,4 @@ class EditButton extends Component {
   }
 }
 
-export default connect(
-  null,
-  {
-    updateBinged,
-    updateCurrentlyBingeing,
-    updateWannaBinge
-  }
-)(EditButton);
+export default EditButton;
