@@ -7,6 +7,7 @@ const cors = require("cors");
 const passport = require("passport");
 const strategy = require(`${__dirname}/strategy.js`);
 const session = require("express-session");
+const path = require("path");
 const app = require("./app");
 
 app.use(bodyParser.json());
