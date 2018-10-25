@@ -72,6 +72,14 @@ app.get("/api/list", controller.getShows);
 app.put("/api/list", controller.moveShow);
 app.delete("/api/list", controller.deleteShow);
 
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build"), function(err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 const port = 4000;
 app.listen(port, () => {
   console.log(`server listening on port ${port}`);
