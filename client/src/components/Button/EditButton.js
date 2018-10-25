@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import fetchShow from "../../api/fetchShow";
+import { connect } from "react-redux";
+
+import {
+  updateBinged,
+  updateCurrentlyBingeing,
+  updateWannaBinge
+} from "../../ducks/reducers/userShows";
 
 class EditButton extends Component {
   moveShow = (showId, listType) => {
@@ -64,4 +71,11 @@ class EditButton extends Component {
   }
 }
 
-export default EditButton;
+export default connect(
+  null,
+  {
+    updateBinged,
+    updateCurrentlyBingeing,
+    updateWannaBinge
+  }
+)(EditButton);
